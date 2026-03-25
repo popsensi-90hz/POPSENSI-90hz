@@ -60,7 +60,7 @@ body::before{
   position:relative;
   display:flex;
   background:#0a0f1f;
-  padding:5px;
+  padding:10px;
   border-radius:10px;
   margin-top:10px;
 }
@@ -70,7 +70,7 @@ body::before{
   top:5px;
   left:5px;
   width:33.33%;
-  height:calc(100% - 10px);
+  height:calc(100% - 20px);
   background:linear-gradient(45deg,#00aaff,#0066ff);
   border-radius:8px;
   transition:0.3s;
@@ -235,14 +235,14 @@ function gerar(){
     x2: rand(100,170),    
     x4: rand(90,160),    
     awm: rand(80,150),    
-    cam: rand(20, 67)    
+    botao: rand(0, 100)    
   };    
     
   let box = document.getElementById("res");    
   box.style.display="block";    
     
   box.innerHTML = `    
-  <h3 style="text-align:center;">SENSIBILIDADES</h3>    
+  <h3 style="text-align:center;">SENSIBILIDADE</h3>    
     
   <div class="grid">    
     <div class="box"><span>🎯GERAL</span><strong>${data.geral}</strong></div>    
