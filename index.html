@@ -6,13 +6,15 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
 
-<title>POP SENSI🌀</title>
+<title>😈POP SENSI🌀</title>
 
 <style>
+*{box-sizing:border-box}
+
 body{
   margin:0;
   font-family:'Orbitron',sans-serif;
-  background:#020617;
+  background:#000;
   color:white;
 }
 
@@ -22,65 +24,60 @@ body::before{
   position:fixed;
   width:100%;
   height:100%;
-  background:linear-gradient(#00aaff15 1px,transparent 1px),
-             linear-gradient(90deg,#00aaff15 1px,transparent 1px);
+  background:linear-gradient(#00aaff10 1px,transparent 1px),
+             linear-gradient(90deg,#00aaff10 1px,transparent 1px);
   background-size:40px 40px;
   z-index:-1;
 }
 
-/* CONTAINER */
 .container{
-  max-width:400px;
+  width:100%;
+  max-width:100%;
   margin:auto;
-  padding:20px;
+  padding:15px;
 }
 
 /* BANNER */
-.banner{
-  border-radius:20px;
-  overflow:hidden;
-  box-shadow:0 0 40px #00aaff;
-}
-
 .banner img{
   width:100%;
+  border-radius:20px;
+  box-shadow:0 0 40px #00aaff;
 }
 
 /* CARD */
 .card{
-  margin-top:20px;
+  margin-top:15px;
   background:#0a0f1f;
   padding:20px;
   border-radius:20px;
-  box-shadow:0 0 30px #00aaff22;
+  box-shadow:0 0 25px #00aaff22;
 }
 
-/* TITULO */
 .title{
   text-align:center;
   color:#00aaff;
-  margin-bottom:10px;
-  text-shadow:0 0 10px #00aaff;
 }
 
 /* PLATFORM */
 .platform{
   display:flex;
-  gap:10px;
+  gap:8px;
+  margin-top:10px;
 }
 
 .platform button{
   flex:1;
-  padding:12px;
-  border-radius:12px;
+  padding:10px;
   border:none;
-  background:#111;
+  border-radius:10px;
+  background:#111827;
   color:white;
   cursor:pointer;
 }
 
-.platform .active{
-  background:linear-gradient(45deg,#00aaff,#0066ff);
+.platform button.active{
+  background:#00aaff;
+  box-shadow:0 0 10px #00aaff;
 }
 
 /* INPUT */
@@ -96,36 +93,20 @@ input, select{
 
 /* BOTÃO */
 .btn{
-  margin-top:15px;
+  margin-top:12px;
   width:100%;
-  padding:15px;
+  padding:14px;
   border:none;
   border-radius:12px;
   background:linear-gradient(45deg,#00aaff,#0066ff);
   color:white;
   font-weight:bold;
   cursor:pointer;
-  box-shadow:0 0 20px #00aaff;
+  box-shadow:0 0 15px #00aaff;
 }
 
-/* RESULTADO */
-.result{
-  margin-top:15px;
-  background:#0c1225;
-  padding:15px;
-  border-radius:15px;
-  display:none;
-}
-
-/* ITEM */
-.item{
-  display:flex;
-  justify-content:space-between;
-  margin:8px 0;
-}
-
-/* TIKTOK */
-.tiktok{
+/* BOTÃO SEGUIR */
+.btn2{
   margin-top:10px;
   width:100%;
   padding:12px;
@@ -133,39 +114,54 @@ input, select{
   border:1px solid #00aaff;
   background:transparent;
   color:#00aaff;
+  cursor:pointer;
+}
+
+/* RESULTADO */
+.result{
+  display:none;
+  margin-top:15px;
+}
+
+/* GRID SENSI */
+.grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  margin-top:10px;
+}
+
+.box{
+  background:#111827;
+  padding:15px;
+  border-radius:12px;
+  text-align:center;
+  box-shadow:0 0 10px #00aaff33;
+}
+
+.box span{
+  font-size:12px;
+  opacity:0.7;
+}
+
+.box strong{
+  display:block;
+  font-size:20px;
+  color:#00aaff;
 }
 
 /* AVALIAÇÕES */
 .reviews{
   margin-top:20px;
-  background:#0a0f1f;
-  padding:15px;
-  border-radius:15px;
-  box-shadow:0 0 20px #00aaff22;
-}
-
-.reviews h3{
-  text-align:center;
-  color:#00aaff;
 }
 
 .review{
-  background:#111827;
+  background:#0a0f1f;
   padding:10px;
   border-radius:10px;
-  margin-top:10px;
-  border-left:3px solid #00aaff;
-  animation:fade 0.5s ease;
-}
-
-.review p{
-  margin:5px 0 0;
-  opacity:0.8;
-}
-
-@keyframes fade{
-  from{opacity:0; transform:translateY(10px);}
-  to{opacity:1; transform:translateY(0);}
+  margin-top:8px;
+  box-shadow:0 0 10px #00aaff22;
+  font-size:13px;
 }
 </style>
 </head>
@@ -179,56 +175,37 @@ input, select{
     <img src="https://i.imgur.com/DG4MRYY.png">
   </div>
 
-  <!-- CARD -->
+  <!-- GERADOR -->
   <div class="card">
-    <h2 class="title">POP SENSI🌀</h2>
+    <h2 class="title">POP SENSI</h2>
 
     <div class="platform">
-      <button class="active" onclick="setPlat(this)">🤖Android</button>
-      <button onclick="setPlat(this)">🍎iOS</button>
-      <button onclick="setPlat(this)">⌨️Emulador</button>
+      <button onclick="setPlat(this)">🤖 Android</button>
+      <button onclick="setPlat(this)">🍎 iOS</button>
+      <button onclick="setPlat(this)">💻 Emulador</button>
     </div>
 
-    <input id="cell" placeholder="Modelo do celular">
+    <input placeholder="Modelo do celular">
 
-    <select id="nivel">
-      <option>🔴Alta</option>
-      <option>🟡Média</option>
-      <option>🟢Baixa</option>
+    <select>
+      <option>Alta</option>
+      <option>Média</option>
+      <option>Baixa</option>
     </select>
 
     <button class="btn" onclick="gerar()">⚡️GERAR SENSIBILIDADE</button>
 
-    <button class="tiktok" onclick="window.open('https://www.tiktok.com/@maxx.tech3?_r=1&_t=ZS-94zCdpFcHJN')">
-     ⭐️ SIGA NO TIKTOK
-    </button>
+    <button class="btn2" onclick="seguir()">SIGA O DONO NO TIKTOK</button>
 
     <div class="result" id="res"></div>
   </div>
 
   <!-- AVALIAÇÕES -->
   <div class="reviews">
-    <h3>⭐ Avaliações dos Players</h3>
-
-    <div class="review">
-      ⭐⭐⭐⭐⭐
-      <p>"Site ótimo, tô dando full capa 🔥"</p>
-    </div>
-
-    <div class="review">
-      ⭐⭐⭐⭐⭐
-      <p>"Melhor sensi que já usei 😈"</p>
-    </div>
-
-    <div class="review">
-      ⭐⭐⭐⭐⭐
-      <p>"Subi capa muito fácil 💀"</p>
-    </div>
-
-    <div class="review">
-      ⭐⭐⭐⭐⭐
-      <p>"Simplesmente insano 🔥🔥"</p>
-    </div>
+    <div class="review">⭐⭐⭐⭐⭐ "Site ótimo, tô dando só capa!"</div>
+    <div class="review">⭐⭐⭐⭐⭐ "Melhor sensi que já usei 🔥"</div>
+    <div class="review">⭐⭐⭐⭐⭐ "Subi mestre fácil 😂"</div>
+    <div class="review">⭐⭐⭐⭐⭐ "Muito brabo slk"</div>
   </div>
 
 </div>
@@ -239,59 +216,36 @@ function setPlat(btn){
   btn.classList.add("active");
 }
 
-function gerar(){
-  let cell = document.getElementById("cell").value || "Desconhecido";
+function seguir(){
+  window.open("https://www.tiktok.com/@maxx.tech3","_blank");
+}
 
+function gerar(){
   let data = {
     geral: rand(150,200),
     red: rand(120,180),
     x2: rand(100,170),
     x4: rand(90,160),
     awm: rand(80,150),
-    dpi: rand(600,900),
-    btn: rand(40,80)
+    cam: rand(150,200)
   };
 
   let box = document.getElementById("res");
   box.style.display="block";
 
   box.innerHTML = `
-<h3 style="text-align:center;">SENSIBILIDADE</h3>
+  <h3 style="text-align:center;">SENSIBILIDADES</h3>
 
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px;">
-
-<div style="background:#111827;padding:15px;border-radius:10px;text-align:center;">
-<span>GERAL</span>
-<strong style="display:block;font-size:20px;color:#00aaff;">${data.geral}</strong>
-</div>
-
-<div style="background:#111827;padding:15px;border-radius:10px;text-align:center;">
-<span>RED DOT</span>
-<strong style="display:block;font-size:20px;color:#00aaff;">${data.red}</strong>
-</div>
-
-<div style="background:#111827;padding:15px;border-radius:10px;text-align:center;">
-<span>MIRA 2X</span>
-<strong style="display:block;font-size:20px;color:#00aaff;">${data.x2}</strong>
-</div>
-
-<div style="background:#111827;padding:15px;border-radius:10px;text-align:center;">
-<span>MIRA 4X</span>
-<strong style="display:block;font-size:20px;color:#00aaff;">${data.x4}</strong>
-</div>
-
-<div style="background:#111827;padding:15px;border-radius:10px;text-align:center;">
-<span>AWM</span>
-<strong style="display:block;font-size:20px;color:#00aaff;">${data.awm}</strong>
-</div>
-
-<div style="background:#111827;padding:15px;border-radius:10px;text-align:center;">
-<span>CÂMERA</span>
-<strong style="display:block;font-size:20px;color:#00aaff;">${rand(150,200)}</strong>
-</div>
-
-</div>
-`;
+  <div class="grid">
+    <div class="box"><span>🎯GERAL</span><strong>${data.geral}</strong></div>
+    <div class="box"><span>🔴PONTO VERMELHO</span><strong>${data.red}</strong></div>
+    <div class="box"><span>🏹MIRA 2X</span><strong>${data.x2}</strong></div>
+    <div class="box"><span>🔫MIRA 4X</span><strong>${data.x4}</strong></div>
+    <div class="box"><span>📍AWM</span><strong>${data.awm}</strong></div>
+    <div class="box"><span>🔘BOTAO</span><strong>${data.cam}</strong></div>
+  </div>
+  `;
+}
 
 function rand(min,max){
   return Math.floor(Math.random()*(max-min)+min);
