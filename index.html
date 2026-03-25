@@ -1,256 +1,269 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
-
-<title>POP SENSI</title>
-
-<style>
-*{box-sizing:border-box}
-
-body{
-  margin:0;
-  font-family:'Orbitron',sans-serif;
-  background:#000;
-  color:white;
-}
-
-/* GRID FUNDO */
-body::before{
-  content:"";
-  position:fixed;
-  width:100%;
-  height:100%;
-  background:linear-gradient(#00aaff10 1px,transparent 1px),
-             linear-gradient(90deg,#00aaff10 1px,transparent 1px);
-  background-size:40px 40px;
-  z-index:-1;
-}
-
-.container{
-  width:100%;
-  max-width:100%;
-  margin:auto;
-  padding:15px;
-}
-
-/* BANNER */
-.banner img{
-  width:100%;
-  border-radius:20px;
-  box-shadow:0 0 40px #00aaff;
-}
-
-/* CARD */
-.card{
-  margin-top:15px;
-  background:#0a0f1f;
-  padding:20px;
-  border-radius:20px;
-  box-shadow:0 0 25px #00aaff22;
-}
-
-.title{
-  text-align:center;
-  color:#00aaff;
-}
-
-/* PLATFORM */
+<!DOCTYPE html>    
+<html lang="pt-BR">    
+<head>    
+<meta charset="UTF-8">    
+<meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">    
+    
+<title>😈POP SENSI🌀</title>    
+    
+<style>    
+*{box-sizing:border-box}    
+    
+body{    
+  margin:0;    
+  font-family:'Orbitron',sans-serif;    
+  background:#000;    
+  color:white;    
+}    
+    
+/* GRID FUNDO */    
+body::before{    
+  content:"";    
+  position:fixed;    
+  width:100%;    
+  height:100%;    
+  background:linear-gradient(#00aaff10 1px,transparent 1px),    
+             linear-gradient(90deg,#00aaff10 1px,transparent 1px);    
+  background-size:40px 40px;    
+  z-index:-1;    
+}    
+    
+.container{    
+  width:100%;    
+  max-width:100%;    
+  margin:auto;    
+  padding:15px;    
+}    
+    
+/* BANNER */    
+.banner img{    
+  width:100%;    
+  border-radius:20px;    
+  box-shadow:0 0 40px #00aaff;    
+}    
+    
+/* CARD */    
+.card{    
+  margin-top:15px;    
+  background:#0a0f1f;    
+  padding:20px;    
+  border-radius:20px;    
+  box-shadow:0 0 25px #00aaff22;    
+}    
+    
+.title{    
+  text-align:center;    
+  color:#00aaff;    
+}    
+    
+/* NOVO PLATFORM INSANO */
 .platform{
   display:flex;
-  gap:8px;
+  background:#0a0f1f;
+  padding:6px;
+  border-radius:16px;
+  box-shadow:0 0 20px #000;
   margin-top:10px;
 }
 
-.platform button{
+.plat{
   flex:1;
-  padding:10px;
-  border:none;
-  border-radius:10px;
-  background:#111827;
-  color:white;
-  cursor:pointer;
-}
-
-.platform button.active{
-  background:#00aaff;
-  box-shadow:0 0 10px #00aaff;
-}
-
-/* INPUT */
-input, select{
-  width:100%;
-  margin-top:10px;
   padding:12px;
-  border-radius:12px;
   border:none;
-  background:#111827;
-  color:white;
+  border-radius:12px;
+  background:transparent;
+  color:#aaa;
+  font-size:13px;
+  cursor:pointer;
+  transition:0.3s;
 }
 
-/* BOTÃO */
-.btn{
-  margin-top:12px;
-  width:100%;
-  padding:14px;
-  border:none;
-  border-radius:12px;
+.plat.active{
   background:linear-gradient(45deg,#00aaff,#0066ff);
   color:white;
-  font-weight:bold;
-  cursor:pointer;
   box-shadow:0 0 15px #00aaff;
 }
 
-/* BOTÃO SEGUIR */
-.btn2{
-  margin-top:10px;
-  width:100%;
-  padding:12px;
-  border-radius:12px;
-  border:1px solid #00aaff;
-  background:transparent;
-  color:#00aaff;
-  cursor:pointer;
+.plat:hover{
+  transform:scale(1.05);
 }
-
-/* RESULTADO */
-.result{
-  display:none;
-  margin-top:15px;
-}
-
-/* GRID SENSI */
-.grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:10px;
-  margin-top:10px;
-}
-
-.box{
-  background:#111827;
-  padding:15px;
-  border-radius:12px;
-  text-align:center;
-  box-shadow:0 0 10px #00aaff33;
-}
-
-.box span{
-  font-size:12px;
-  opacity:0.7;
-}
-
-.box strong{
-  display:block;
-  font-size:20px;
-  color:#00aaff;
-}
-
-/* AVALIAÇÕES */
-.reviews{
-  margin-top:20px;
-}
-
-.review{
-  background:#0a0f1f;
-  padding:10px;
-  border-radius:10px;
-  margin-top:8px;
-  box-shadow:0 0 10px #00aaff22;
-  font-size:13px;
-}
-</style>
-</head>
-
-<body>
-
-<div class="container">
-
-  <!-- BANNER -->
-  <div class="banner">
-    <img src="https://imgur.com/yy-Z104fSX.png">
-  </div>
-
-  <!-- GERADOR -->
-  <div class="card">
-    <h2 class="title">⚡️POP SENSI🌀</h2>
-
+    
+/* INPUT */    
+input, select{    
+  width:100%;    
+  margin-top:10px;    
+  padding:12px;    
+  border-radius:12px;    
+  border:none;    
+  background:#111827;    
+  color:white;    
+}    
+    
+/* BOTÃO */    
+.btn{    
+  margin-top:12px;    
+  width:100%;    
+  padding:14px;    
+  border:none;    
+  border-radius:12px;    
+  background:linear-gradient(45deg,#00aaff,#0066ff);    
+  color:white;    
+  font-weight:bold;    
+  cursor:pointer;    
+  box-shadow:0 0 15px #00aaff;    
+}    
+    
+/* BOTÃO SEGUIR */    
+.btn2{    
+  margin-top:10px;    
+  width:100%;    
+  padding:12px;    
+  border-radius:12px;    
+  border:1px solid #00aaff;    
+  background:transparent;    
+  color:#00aaff;    
+  cursor:pointer;    
+}    
+    
+/* RESULTADO */    
+.result{    
+  display:none;    
+  margin-top:15px;    
+}    
+    
+/* GRID SENSI */    
+.grid{    
+  display:grid;    
+  grid-template-columns:1fr 1fr;    
+  gap:10px;    
+  margin-top:10px;    
+}    
+    
+.box{    
+  background:#111827;    
+  padding:15px;    
+  border-radius:12px;    
+  text-align:center;    
+  box-shadow:0 0 10px #00aaff33;    
+}    
+    
+.box span{    
+  font-size:12px;    
+  opacity:0.7;    
+}    
+    
+.box strong{    
+  display:block;    
+  font-size:20px;    
+  color:#00aaff;    
+}    
+    
+/* AVALIAÇÕES */    
+.reviews{    
+  margin-top:20px;    
+}    
+    
+.review{    
+  background:#0a0f1f;    
+  padding:10px;    
+  border-radius:10px;    
+  margin-top:8px;    
+  box-shadow:0 0 10px #00aaff22;    
+  font-size:13px;    
+}    
+</style>    
+</head>    
+    
+<body>    
+    
+<div class="container">    
+    
+  <!-- BANNER -->    
+  <div class="banner">    
+    <img src="https://imgur.com/Z104fSX.png">    
+  </div>    
+    
+  <!-- GERADOR -->    
+  <div class="card">    
+    <h2 class="title">POP SENSI</h2>    
+    
+    <!-- BOTÕES NOVOS -->
     <div class="platform">
-      <button onclick="setPlat(this)">🤖 Android</button>
-      <button onclick="setPlat(this)">🍎 iOS</button>
-      <button onclick="setPlat(this)">💻 Emulador</button>
-    </div>
-
-    <input placeholder="Modelo do celular">
-
-    <select>
-      <option>🔴Alta</option>
-      <option>🟡Média</option>
-      <option>🟢Baixa</option>
-    </select>
-
-    <button class="btn" onclick="gerar()">⚡️GERAR SENSIBILIDADE</button>
-
-    <button class="btn2" onclick="seguir()">🪄SIGA O DONO NO TIKTOK</button>
-
-    <div class="result" id="res"></div>
-  </div>
-
-  <!-- AVALIAÇÕES -->
-  <div class="reviews">
-    <div class="review">⭐⭐⭐⭐⭐ "Site ótimo, tô dando só capa!"</div>
-    <div class="review">⭐⭐⭐⭐⭐ "Melhor sensi que já usei 🔥"</div>
-    <div class="review">⭐⭐⭐⭐⭐ "Subi mestre fácil 😂"</div>
-    <div class="review">⭐⭐⭐⭐⭐ "Muito brabo slk"</div>
-  </div>
-
-</div>
-
-<script>
+      <button class="plat active" onclick="setPlat(this)">🤖 ANDROID</button>
+      <button class="plat" onclick="setPlat(this)">🍎 IOS</button>
+      <button class="plat" onclick="setPlat(this)">🖱️ MOBILADOR</button>
+    </div>    
+    
+    <input placeholder="Modelo do celular">    
+    
+    <select>    
+      <option>Alta</option>    
+      <option>Média</option>    
+      <option>Baixa</option>    
+    </select>    
+    
+    <button class="btn" onclick="gerar()">⚡️GERAR SENSIBILIDADE</button>    
+    
+    <button class="btn2" onclick="seguir()">SIGA O DONO NO TIKTOK</button>    
+    
+    <div class="result" id="res"></div>    
+  </div>    
+    
+  <!-- AVALIAÇÕES -->    
+  <div class="reviews">    
+    <div class="review">⭐⭐⭐⭐⭐ "Site ótimo, tô dando só capa!"</div>    
+    <div class="review">⭐⭐⭐⭐⭐ "Melhor sensi que já usei 🔥"</div>    
+    <div class="review">⭐⭐⭐⭐⭐ "Subi mestre fácil 😂"</div>    
+    <div class="review">⭐⭐⭐⭐⭐ "Muito brabo slk"</div>    
+  </div>    
+    
+</div>    
+    
+<script>    
 function setPlat(btn){
-  document.querySelectorAll(".platform button").forEach(b=>b.classList.remove("active"));
+  document.querySelectorAll(".plat").forEach(b=>{
+    b.classList.remove("active");
+  });
   btn.classList.add("active");
 }
-
-function seguir(){
-  window.open("https://www.tiktok.com/@maxx.tech3","_blank");
-}
-
-function gerar(){
-  let data = {
-    geral: rand(150,200),
-    red: rand(120,180),
-    x2: rand(100,170),
-    x4: rand(90,160),
-    awm: rand(80,150),
-    cam: rand(150,200)
-  };
-
-  let box = document.getElementById("res");
-  box.style.display="block";
-
-  box.innerHTML = `
-  <h3 style="text-align:center;">SENSIBILIDADES</h3>
-
-  <div class="grid">
-    <div class="box"><span>🎯GERAL</span><strong>${data.geral}</strong></div>
-    <div class="box"><span>🔴PONTO VERMELHO</span><strong>${data.red}</strong></div>
-    <div class="box"><span>🏹MIRA 2X</span><strong>${data.x2}</strong></div>
-    <div class="box"><span>🔫MIRA 4X</span><strong>${data.x4}</strong></div>
-    <div class="box"><span>📍AWM</span><strong>${data.awm}</strong></div>
-    <div class="box"><span>🔘BOTAO</span><strong>${data.cam}</strong></div>
-  </div>
-  `;
-}
-
-function rand(min,max){
-  return Math.floor(Math.random()*(max-min)+min);
-}
-</script>
-
-</body>
+    
+function seguir(){    
+  window.open("https://www.tiktok.com/@maxx.tech3","_blank");    
+}    
+    
+function gerar(){    
+  let data = {    
+    geral: rand(150,200),    
+    red: rand(120,180),    
+    x2: rand(100,170),    
+    x4: rand(90,160),    
+    awm: rand(80,150),    
+    cam: rand(150,200)    
+  };    
+    
+  let box = document.getElementById("res");    
+  box.style.display="block";    
+    
+  box.innerHTML = `    
+  <h3 style="text-align:center;">SENSIBILIDADES</h3>    
+    
+  <div class="grid">    
+    <div class="box"><span>🎯GERAL</span><strong>${data.geral}</strong></div>    
+    <div class="box"><span>🔴PONTO VERMELHO</span><strong>${data.red}</strong></div>    
+    <div class="box"><span>🏹MIRA 2X</span><strong>${data.x2}</strong></div>    
+    <div class="box"><span>🔫MIRA 4X</span><strong>${data.x4}</strong></div>    
+    <div class="box"><span>📍AWM</span><strong>${data.awm}</strong></div>    
+    <div class="box"><span>🔘BOTAO</span><strong>${data.cam}</strong></div>    
+  </div>    
+  `;    
+}    
+    
+function rand(min,max){    
+  return Math.floor(Math.random()*(max-min)+min);    
+}    
+</script>    
+    
+</body>    
 </html>
