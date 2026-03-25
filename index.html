@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+
+<title>POP SENSI🌀</title>
+
+<style>
+body{
+  margin:0;
+  font-family:'Orbitron',sans-serif;
+  background:#020617;
+  color:white;
+}
+
+/* GRID FUNDO */
+body::before{
+  content:"";
+  position:fixed;
+  width:100%;
+  height:100%;
+  background:linear-gradient(#00aaff15 1px,transparent 1px),
+             linear-gradient(90deg,#00aaff15 1px,transparent 1px);
+  background-size:40px 40px;
+  z-index:-1;
+}
+
+/* CONTAINER */
+.container{
+  max-width:400px;
+  margin:auto;
+  padding:20px;
+}
+
+/* BANNER */
+.banner{
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:0 0 40px #00aaff;
+}
+
+.banner img{
+  width:100%;
+}
+
+/* CARD */
+.card{
+  margin-top:20px;
+  background:#0a0f1f;
+  padding:20px;
+  border-radius:20px;
+  box-shadow:0 0 30px #00aaff22;
+}
+
+/* TITULO */
+.title{
+  text-align:center;
+  color:#00aaff;
+  margin-bottom:10px;
+  text-shadow:0 0 10px #00aaff;
+}
+
+/* PLATFORM */
+.platform{
+  display:flex;
+  gap:10px;
+}
+
+.platform button{
+  flex:1;
+  padding:12px;
+  border-radius:12px;
+  border:none;
+  background:#111;
+  color:white;
+  cursor:pointer;
+}
+
+.platform .active{
+  background:linear-gradient(45deg,#00aaff,#0066ff);
+}
+
+/* INPUT */
+input, select{
+  width:100%;
+  margin-top:10px;
+  padding:12px;
+  border-radius:12px;
+  border:none;
+  background:#111827;
+  color:white;
+}
+
+/* BOTÃO */
+.btn{
+  margin-top:15px;
+  width:100%;
+  padding:15px;
+  border:none;
+  border-radius:12px;
+  background:linear-gradient(45deg,#00aaff,#0066ff);
+  color:white;
+  font-weight:bold;
+  cursor:pointer;
+  box-shadow:0 0 20px #00aaff;
+}
+
+/* RESULTADO */
+.result{
+  margin-top:15px;
+  background:#0c1225;
+  padding:15px;
+  border-radius:15px;
+  display:none;
+}
+
+/* ITEM */
+.item{
+  display:flex;
+  justify-content:space-between;
+  margin:8px 0;
+}
+
+/* TIKTOK */
+.tiktok{
+  margin-top:10px;
+  width:100%;
+  padding:12px;
+  border-radius:12px;
+  border:1px solid #00aaff;
+  background:transparent;
+  color:#00aaff;
+}
+
+/* AVALIAÇÕES */
+.reviews{
+  margin-top:20px;
+  background:#0a0f1f;
+  padding:15px;
+  border-radius:15px;
+  box-shadow:0 0 20px #00aaff22;
+}
+
+.reviews h3{
+  text-align:center;
+  color:#00aaff;
+}
+
+.review{
+  background:#111827;
+  padding:10px;
+  border-radius:10px;
+  margin-top:10px;
+  border-left:3px solid #00aaff;
+  animation:fade 0.5s ease;
+}
+
+.review p{
+  margin:5px 0 0;
+  opacity:0.8;
+}
+
+@keyframes fade{
+  from{opacity:0; transform:translateY(10px);}
+  to{opacity:1; transform:translateY(0);}
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- BANNER -->
+  <div class="banner">
+    <img src="https://i.imgur.com/DG4MRYY.png">
+  </div>
+
+  <!-- CARD -->
+  <div class="card">
+    <h2 class="title">POP SENSI🌀</h2>
+
+    <div class="platform">
+      <button class="active" onclick="setPlat(this)">🤖Android</button>
+      <button onclick="setPlat(this)">🍎iOS</button>
+      <button onclick="setPlat(this)">⌨️Emulador</button>
+    </div>
+
+    <input id="cell" placeholder="Modelo do celular">
+
+    <select id="nivel">
+      <option>🔴Alta</option>
+      <option>🟡Média</option>
+      <option>🟢Baixa</option>
+    </select>
+
+    <button class="btn" onclick="gerar()">⚡️GERAR SENSIBILIDADE</button>
+
+    <button class="tiktok" onclick="window.open('https://www.tiktok.com/@maxx.tech3?_r=1&_t=ZS-94zCdpFcHJN')">
+     ⭐️ SIGA NO TIKTOK
+    </button>
+
+    <div class="result" id="res"></div>
+  </div>
+
+  <!-- AVALIAÇÕES -->
+  <div class="reviews">
+    <h3>⭐ Avaliações dos Players</h3>
+
+    <div class="review">
+      ⭐⭐⭐⭐⭐
+      <p>"Site ótimo, tô dando full capa 🔥"</p>
+    </div>
+
+    <div class="review">
+      ⭐⭐⭐⭐⭐
+      <p>"Melhor sensi que já usei 😈"</p>
+    </div>
+
+    <div class="review">
+      ⭐⭐⭐⭐⭐
+      <p>"Subi capa muito fácil 💀"</p>
+    </div>
+
+    <div class="review">
+      ⭐⭐⭐⭐⭐
+      <p>"Simplesmente insano 🔥🔥"</p>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function setPlat(btn){
+  document.querySelectorAll(".platform button").forEach(b=>b.classList.remove("active"));
+  btn.classList.add("active");
+}
+
+function gerar(){
+  let cell = document.getElementById("cell").value || "Desconhecido";
+
+  let data = {
+    geral: rand(150,200),
+    red: rand(120,180),
+    x2: rand(100,170),
+    x4: rand(90,160),
+    awm: rand(80,150),
+    dpi: rand(600,900),
+    btn: rand(40,80)
+  };
+
+  let box = document.getElementById("res");
+  box.style.display="block";
+
+  box.innerHTML = `
+    <h3>CONFIGURAÇÃO GERADA</h3>
+
+    <div class="item"><span>📱Celular</span><span>${cell}</span></div>
+    <div class="item"><span>🎯Geral</span><span>${data.geral}</span></div>
+    <div class="item"><span>Red Dot</span><span>${data.red}</span></div>
+    <div class="item"><span>🏹2X</span><span>${data.x2}</span></div>
+    <div class="item"><span>🔫4X</span><span>${data.x4}</span></div>
+    <div class="item"><span>🏹AWM</span><span>${data.awm}</span></div>
+    <div class="item"><span>🧲DPI</span><span>${data.dpi}</span></div>
+    <div class="item"><span>🔘Botão</span><span>${data.btn}</span></div>
+  `;
+}
+
+function rand(min,max){
+  return Math.floor(Math.random()*(max-min)+min);
+}
+</script>
+
+</body>
+</html>
