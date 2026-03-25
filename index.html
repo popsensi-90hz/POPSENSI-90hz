@@ -256,18 +256,42 @@ function gerar(){
   box.style.display="block";
 
   box.innerHTML = `
-    <h3>CONFIGURAÇÃO GERADA</h3>
+<h3 style="text-align:center;">SENSIBILIDADE</h3>
 
-    <div class="item"><span>📱Celular</span><span>${cell}</span></div>
-    <div class="item"><span>🎯Geral</span><span>${data.geral}</span></div>
-    <div class="item"><span>Red Dot</span><span>${data.red}</span></div>
-    <div class="item"><span>🏹2X</span><span>${data.x2}</span></div>
-    <div class="item"><span>🔫4X</span><span>${data.x4}</span></div>
-    <div class="item"><span>🏹AWM</span><span>${data.awm}</span></div>
-    <div class="item"><span>🧲DPI</span><span>${data.dpi}</span></div>
-    <div class="item"><span>🔘Botão</span><span>${data.btn}</span></div>
-  `;
-}
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px;">
+
+<div style="background:#111827;padding:15px;border-radius:10px;text-align:center;">
+<span>GERAL</span>
+<strong style="display:block;font-size:20px;color:#00aaff;">${data.geral}</strong>
+</div>
+
+<div style="background:#111827;padding:15px;border-radius:10px;text-align:center;">
+<span>RED DOT</span>
+<strong style="display:block;font-size:20px;color:#00aaff;">${data.red}</strong>
+</div>
+
+<div style="background:#111827;padding:15px;border-radius:10px;text-align:center;">
+<span>MIRA 2X</span>
+<strong style="display:block;font-size:20px;color:#00aaff;">${data.x2}</strong>
+</div>
+
+<div style="background:#111827;padding:15px;border-radius:10px;text-align:center;">
+<span>MIRA 4X</span>
+<strong style="display:block;font-size:20px;color:#00aaff;">${data.x4}</strong>
+</div>
+
+<div style="background:#111827;padding:15px;border-radius:10px;text-align:center;">
+<span>AWM</span>
+<strong style="display:block;font-size:20px;color:#00aaff;">${data.awm}</strong>
+</div>
+
+<div style="background:#111827;padding:15px;border-radius:10px;text-align:center;">
+<span>CÂMERA</span>
+<strong style="display:block;font-size:20px;color:#00aaff;">${rand(150,200)}</strong>
+</div>
+
+</div>
+`;
 
 function rand(min,max){
   return Math.floor(Math.random()*(max-min)+min);
