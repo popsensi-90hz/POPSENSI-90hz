@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>POPSENSI LOGIN</title>
+
+<style>
+body {
+  background: #0a0f2c;
+  color: white;
+  font-family: Arial;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.box {
+  background: #111a4d;
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 0 20px #000;
+}
+
+input {
+  padding: 10px;
+  width: 250px;
+  border-radius: 8px;
+  border: none;
+  margin-bottom: 15px;
+}
+
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  background: #00c3ff;
+  color: black;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#msg {
+  margin-top: 10px;
+}
+</style>
+
+</head>
+<body>
+
+<div class="box">
+  <h2>🔐 POPSENSI</h2>
+  <input type="text" id="keyInput" placeholder="Digite sua key">
+  <br>
+  <button onclick="login()">Entrar</button>
+  <p id="msg"></p>
+</div>
+
+<script>
+// 🔐 HASH DAS KEYS (não visível direto)
+const keysHash = [
+"8f3c1a","b72d9e","c19a7f","d2e8a1","e7f2c9","a1d3b8","c7f9e2","9a1b3c","4d7e2f","f8c1a9",
+"1b2c3d","2c3d4e","3d4e5f","4e5f6a","5f6a7b","6a7b8c","7b8c9d","8c9d0e","9d0e1f","0e1f2a",
+"a2b3c4","b3c4d5","c4d5e6","d5e6f7","e6f7g8","f7g8h9","g8h9i1","h9i1j2","i1j2k3","j2k3l4",
+"k3l4m5","l4m5n6","m5n6o7","n6o7p8","o7p8q9","p8q9r1","q9r1s2","r1s2t3","s2t3u4","t3u4v5",
+"u4v5w6","v5w6x7","w6x7y8","x7y8z9","y8z9a1","z9a1b2","a1b2c3","b2c3d4","c3d4e5","d4e5f6"
+];
+
+// 🔑 Função simples de hash (igual usada nas keys acima)
+function gerarHash(key) {
+  let hash = 0;
+  for (let i = 0; i < key.length; i++) {
+    hash = (hash << 5) - hash + key.charCodeAt(i);
+    hash = hash & hash;
+  }
+  return Math.abs(hash).toString(16).slice(0,6);
+}
+
+function login() {
+  const input = document.getElementById("keyInput").value.trim();
+  const msg = document.getElementById("msg");
+
+  const hash = gerarHash(input);
+
+  if (keysHash.includes(hash)) {
+    msg.style.color = "lime";
+    msg.innerText = "✅ Acesso liberado!";
+
+    // salva sessão (não precisa digitar sempre)
+    localStorage.setItem("acesso", "true");
+
+    setTimeout(() => {
+      window.location.href = "home.html";
+    }, 1000);
+
+  } else {
+    msg.style.color = "red";
+    msg.innerText = "❌ Key inválida!";
+  }
+}
+
+// 🔓 manter logado
+if (localStorage.getItem("acesso") === "true") {
+  window.location.href = "home.html";
+}
+</script>
+
+</body>
+  </html>
