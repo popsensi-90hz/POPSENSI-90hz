@@ -233,7 +233,7 @@ input, select{
       <button class="plat" onclick="setPlat(this,2)">🖱EMULADOR</button>
     </div>
 
-    <input placeholder="Modelo do celular">
+    <input placeholder="Modelo do celular ex: IPhone 17">
 
     <button class="btn" onclick="gerar()">⚡ GERAR SENSI</button>
     <button class="btn2" onclick="seguir()">🪄 SIGA O DONO</button>
@@ -279,8 +279,8 @@ function mostrarPergunta(){
 
   if(etapa===1) q.innerHTML=tela("🔥 VOCÊ DA MUITO CAPA?",["SIM","NAO","MAIS OU MENOS"]);
   else if(etapa===2) q.innerHTML=tela("🎯 MIRA GRUDA NO PEITO?",["SIM","NAO","MAIS OU MENOS"]);
-  else if(etapa===3) q.innerHTML=tela("⚙️ SUA SENSI?",["ALTA","MEDIA","BAIXA"]);
-  else if(etapa===4) q.innerHTML=tela("🔫 ESTILO?",["RUSH","SNIPER","UMP"]);
+  else if(etapa===3) q.innerHTML=tela("⚙️ SUA SENSI?",["🟢ALTA","🟡MEDIA","🔴BAIXA"]);
+  else if(etapa===4) q.innerHTML=tela("🔫 ESTILO?",["🔴CAPA EXTREMO","🏹SNIPER","🤡LOUCO DA UMP"]);
   else gerarFinal();
 }
 
