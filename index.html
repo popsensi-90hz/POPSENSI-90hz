@@ -2,58 +2,111 @@
 <html lang="pt-br">
 <head>
 <meta charset="UTF-8">
-<title>POPSENSI LOGIN</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>POP SENSI</title>
 
 <style>
-body {
-  background: linear-gradient(135deg, #0a0f2c, #000);
-  color: white;
-  font-family: Arial;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: 'Segoe UI', sans-serif;
 }
 
-.box {
-  background: #111a4d;
-  padding: 40px;
-  width: 100%;
-  max-width: 400px;
-  border-radius: 20px;
-  text-align: center;
-  box-shadow: 0 0 30px #00c3ff;
+body{
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  background: linear-gradient(180deg, #050818, #0a0f2c);
 }
 
-h2 {
-  margin-bottom: 20px;
+/* CARD PRINCIPAL */
+.box{
+  width:90%;
+  max-width:360px;
+  padding:30px 20px;
+  border-radius:25px;
+
+  background: linear-gradient(180deg, rgba(20,30,80,0.9), rgba(10,15,40,0.95));
+
+  box-shadow:
+    0 0 50px rgba(0, 0, 0, 0.8),
+    inset 0 0 30px rgba(0, 195, 255, 0.05);
+
+  text-align:center;
 }
 
-input {
-  padding: 12px;
-  width: 90%;
-  border-radius: 10px;
-  border: none;
-  margin-bottom: 15px;
+/* LOGO */
+.logo{
+  width:95px;
+  margin-top:-70px;
+  margin-bottom:10px;
+
+  filter: drop-shadow(0 0 15px #00c3ff);
 }
 
-button {
-  padding: 12px 25px;
-  border: none;
-  border-radius: 10px;
-  background: #00c3ff;
-  color: black;
-  cursor: pointer;
-  font-weight: bold;
-  transition: 0.3s;
+/* TITULO */
+h1{
+  font-size:30px;
+  font-weight:800;
+  color:#fff;
 }
 
-button:hover {
-  background: #00a2d6;
+h1 span{
+  color:#00c3ff;
 }
 
-#msg {
-  margin-top: 10px;
+/* SUB */
+.sub{
+  color:#cfcfcf;
+  margin-bottom:25px;
+  font-size:14px;
+}
+
+/* INPUT ESTILO BOTÃO */
+.input{
+  width:100%;
+  padding:16px;
+  border-radius:30px;
+  border:none;
+  outline:none;
+
+  background: linear-gradient(90deg, #2a00ff, #1a00aa);
+  color:white;
+
+  margin-bottom:15px;
+
+  font-size:15px;
+}
+
+/* BOTÃO */
+.btn{
+  width:100%;
+  padding:16px;
+  border-radius:30px;
+  border:none;
+
+  background: linear-gradient(90deg, #2a00ff, #00c3ff);
+  color:white;
+
+  font-weight:bold;
+  font-size:16px;
+
+  cursor:pointer;
+  transition:0.2s;
+}
+
+.btn:active{
+  transform:scale(0.97);
+}
+
+/* MSG */
+#msg{
+  margin-top:10px;
+  font-size:14px;
 }
 </style>
 
@@ -61,16 +114,25 @@ button:hover {
 <body>
 
 <div class="box">
-  <h2>🔐 POPSENSI LOGIN</h2>
-  <input type="text" id="keyInput" placeholder="Digite sua key">
-  <br>
-  <button onclick="login()">Entrar</button>
+
+  <!-- LOGO -->
+  <img class="logo" src="https://i.imgur.com/Z9IoRnb.png">
+
+  <h1>POP SENSI<span>🌀</span></h1>
+  <p class="sub">Acesso restrito – Seja bem-vindo</p>
+
+  <input class="input" type="text" id="keyInput" placeholder="🔑 key de acesso">
+
+  <button class="btn" onclick="login()">Entrar</button>
+
+  <div class="price">POR APENAS: 4,90</div>
+
   <p id="msg"></p>
+
 </div>
 
 <script>
 
-// 🔑 TODAS SUAS KEYS
 const keysValidas = [
 "POPSENS-4G7H-J2K9","POPSENS-X9C3-P1L8","POPSENS-A6T2-Z8Q5","POPSENS-M3R7-D9F1",
 "POPSENS-K8N4-V2B6","POPSENS-Y5P1-H7X3","POPSENS-2D9Q-L6M4","POPSENS-B7F3-T1Z8",
@@ -100,28 +162,37 @@ const keysValidas = [
 "POPSENS-L9Q3-V6F1","POPSENS-R7K4-M2D8"
 ];
 
-function login() {
+function login(){
   const input = document.getElementById("keyInput").value.trim();
   const msg = document.getElementById("msg");
 
-  if (keysValidas.includes(input)) {
-    msg.style.color = "lime";
+  if(keysValidas.includes(input)){
+    msg.style.color = "#00ffcc";
     msg.innerText = "✅ Acesso liberado!";
-    localStorage.setItem("acesso", "true");
+    localStorage.setItem("acesso","true");
 
-    setTimeout(() => {
+    setTimeout(()=>{
       window.location.href = "home.html";
-    }, 1000);
-  } else {
+    },1000);
+
+  }else{
     msg.style.color = "red";
     msg.innerText = "❌ Key inválida!";
   }
-}
 
-// manter logado
-if (localStorage.getItem("acesso") === "true") {
-  window.location.href = "home.html";
-}
+</script>
+
+</body>
+</html>e");
+
+    setTimeout(()=>{
+      window.location.href = "home.html";
+    },1000);
+
+  }else{
+    msg.style.color = "red";
+    msg.innerText = "❌ Key inválida!";
+  }
 
 </script>
 
