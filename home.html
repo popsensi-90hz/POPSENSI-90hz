@@ -14,10 +14,12 @@
 body{
   margin:0;
   font-family:'Orbitron',sans-serif;
-  background:#000;
+  background: radial-gradient(circle at top,#0a0f2c,#000);
   color:white;
+  overflow-x:hidden;
 }
 
+/* GRID BACKGROUND */
 body::before{
   content:"";
   position:fixed;
@@ -30,7 +32,6 @@ body::before{
 }
 
 .container{
-  width:100%;
   padding:15px;
 }
 
@@ -45,12 +46,13 @@ body::before{
   background:#0a0f1f;
   padding:20px;
   border-radius:20px;
-  box-shadow:0 0 25px #00aaff22;
+  box-shadow:0 0 25px #00aaff33;
 }
 
 .title{
   text-align:center;
   color:#00aaff;
+  text-shadow:0 0 10px #00aaff;
 }
 
 /* PLATFORM */
@@ -68,7 +70,7 @@ body::before{
   top:5px;
   left:5px;
   width:33.33%;
-  height:calc(100% - 20px);
+  height:calc(100% - 10px);
   background:linear-gradient(45deg,#00aaff,#0066ff);
   border-radius:8px;
   transition:0.3s;
@@ -89,6 +91,7 @@ body::before{
   color:white;
 }
 
+/* INPUTS */
 input, select{
   width:100%;
   margin-top:10px;
@@ -99,6 +102,7 @@ input, select{
   color:white;
 }
 
+/* BUTTONS */
 .btn{
   margin-top:12px;
   width:100%;
@@ -110,6 +114,11 @@ input, select{
   font-weight:bold;
   cursor:pointer;
   box-shadow:0 0 15px #00aaff;
+  transition:0.2s;
+}
+
+.btn:hover{
+  transform:scale(1.03);
 }
 
 .btn2{
@@ -123,19 +132,18 @@ input, select{
   cursor:pointer;
 }
 
-/* QUIZ FULL SCREEN */
+/* QUIZ */
 .quiz-full{
   position:fixed;
   top:0;
   left:0;
   width:100%;
   height:100%;
-  background:#000;
+  background:#000c;
   display:flex;
   align-items:center;
   justify-content:center;
   z-index:9999;
-  animation:fade 0.3s ease;
 }
 
 .quiz-content{
@@ -146,11 +154,12 @@ input, select{
   border-radius:20px;
   box-shadow:0 0 30px #00aaff;
   text-align:center;
+  animation:zoom .3s;
 }
 
-.quiz-content h3{
-  color:#00aaff;
-  margin-bottom:20px;
+@keyframes zoom{
+  from{transform:scale(0.8); opacity:0}
+  to{transform:scale(1); opacity:1}
 }
 
 .quiz-btn{
@@ -161,21 +170,12 @@ input, select{
   border-radius:12px;
   background:#111827;
   color:#00aaff;
-  font-weight:bold;
   cursor:pointer;
-  transition:0.2s;
-  box-shadow:0 0 10px #00aaff33;
 }
 
 .quiz-btn:hover{
   background:linear-gradient(45deg,#00aaff,#0066ff);
   color:white;
-  box-shadow:0 0 20px #00aaff;
-}
-
-@keyframes fade{
-  from{opacity:0; transform:scale(0.95);}
-  to{opacity:1; transform:scale(1);}
 }
 
 /* RESULT */
@@ -230,28 +230,30 @@ input, select{
       <div class="selector"></div>
       <button class="plat active" onclick="setPlat(this,0)">🤖ANDROID</button>
       <button class="plat" onclick="setPlat(this,1)">🍎IOS</button>
-      <button class="plat" onclick="setPlat(this,2)">🖱MOBILADOR</button>
+      <button class="plat" onclick="setPlat(this,2)">🖱EMULADOR</button>
     </div>
 
     <input placeholder="Modelo do celular">
-
     <select>
       <option>Alta</option>
       <option>Média</option>
       <option>Baixa</option>
     </select>
 
-    <button class="btn" onclick="gerar()">⚡️GERAR SENSI</button>
-    <button class="btn2" onclick="seguir()">🪄SIGA O DONO</button>
+    <button class="btn" onclick="gerar()">⚡ GERAR SENSI</button>
+    <button class="btn2" onclick="seguir()">🪄 SIGA O DONO</button>
 
     <div id="quiz"></div>
     <div class="result" id="res"></div>
 
   </div>
 
-  <div class="review">⭐⭐⭐⭐⭐ " Site ótimo!"</div>
-  <div class="review">⭐⭐⭐⭐⭐ "Melhor sensi 🔥"</div>
- <div class="review ">⭐️⭐️⭐️⭐️ "Muito top valeu a pena🔥"</div>
+  <!-- REVIEWS GAMER -->
+  <div class="review">⭐⭐⭐⭐⭐ "Brabo demais!" - xX_FlashKill_Xx</div>
+  <div class="review">⭐⭐⭐⭐⭐ "Subi mestre fácil 🔥" - ProHeadShot77</div>
+  <div class="review">⭐⭐⭐⭐⭐ "Melhor sensi da vida!" - GhostRush</div>
+  <div class="review">⭐⭐⭐⭐⭐ "Muito apelão slk 😈" - SniperGod</div>
+  <div class="review">⭐⭐⭐⭐⭐ "Só capa agora 🔥🔥" - AK_Dominador</div>
 
 </div>
 
@@ -271,6 +273,7 @@ let etapa=1;
 let respostas={};
 
 function gerar(){
+  document.getElementById("res").style.display="none";
   etapa=1;
   respostas={};
   mostrarPergunta();
@@ -279,11 +282,11 @@ function gerar(){
 function mostrarPergunta(){
   let q=document.getElementById("quiz");
 
-  if(etapa===1) q.innerHTML=tela("1️⃣ VOCÊ ESTA DANDO MUITO CAPA?",["SIM","NAO","MAIS OU MENOS"]);
-  if(etapa===2) q.innerHTML=tela("2️⃣ SUA MIRA ESTA GRUDANDO NO PEITO?",["SIM","NAO","MAIS OU MENOS"]);
-  if(etapa===3) q.innerHTML=tela("3️⃣ VOCÊ PREFERE?",["🟢 ALTA","🟡 MEDIA","🔴 BAIXA"]);
-  if(etapa===4) q.innerHTML=tela("4️⃣ SEU ESTILO?",["🔫 ARMA DE UM TIRO","🏹 SNIPER","🤡 LOUCO DA UMP"]);
-  if(etapa===5) gerarFinal();
+  if(etapa===1) q.innerHTML=tela("🔥 VOCÊ DA MUITO CAPA?",["SIM","NAO","MAIS OU MENOS"]);
+  else if(etapa===2) q.innerHTML=tela("🎯 MIRA GRUDA NO PEITO?",["SIM","NAO","MAIS OU MENOS"]);
+  else if(etapa===3) q.innerHTML=tela("⚙️ SUA SENSI?",["ALTA","MEDIA","BAIXA"]);
+  else if(etapa===4) q.innerHTML=tela("🔫 ESTILO?",["RUSH","SNIPER","UMP"]);
+  else gerarFinal();
 }
 
 function tela(p,ops){
@@ -307,18 +310,18 @@ function gerarFinal(){
 
   if(respostas.p1==="NAO") base+=20;
   if(respostas.p2==="SIM") base-=10;
-  if(respostas.p3.includes("ALTA")) base+=30;
-  if(respostas.p3.includes("BAIXA")) base-=30;
-  if(respostas.p4.includes("UMP")) base+=20;
-  if(respostas.p4.includes("SNIPER")) base-=20;
+  if(respostas.p3==="ALTA") base+=30;
+  if(respostas.p3==="BAIXA") base-=30;
+  if(respostas.p4==="UMP") base+=20;
+  if(respostas.p4==="SNIPER") base-=20;
 
   let d={
-    geral:rand(base-20,base+20),
-    red:rand(base-40,base),
-    x2:rand(base-50,base-10),
-    x4:rand(base-60,base-20),
-    awm:rand(base-70,base-30),
-    cam:rand(20,80)
+    geral:rand(100,200),
+    red:rand(80,180),
+    x2:rand(70,170),
+    x4:rand(60,160),
+    awm:rand(50,150),
+    cam:rand(20,70)
   };
 
   document.getElementById("quiz").innerHTML="";
@@ -327,15 +330,23 @@ function gerarFinal(){
   r.style.display="block";
 
   r.innerHTML=`
-  <h3 style="text-align:center;">SENSI FINAL 🔥</h3>
+  <h3 style="text-align:center;">🔥 SUA SENSI 🔥</h3>
   <div class="grid">
-    <div class="box"><strong>${d.geral}</strong>GERAL</div>
-    <div class="box"><strong>${d.red}</strong>PONT RED</div>
-    <div class="box"><strong>${d.x2}</strong>2X</div>
-    <div class="box"><strong>${d.x4}</strong>4X</div>
-    <div class="box"><strong>${d.awm}</strong>AWM</div>
-    <div class="box"><strong>${d.cam}</strong>BOTAO</div>
-  </div>`;
+    <div class="box"><strong>${d.geral}</strong>🎯GERAL</div>
+    <div class="box"><strong>${d.red}</strong>🔴RED DOT</div>
+    <div class="box"><strong>${d.x2}</strong>🔥2X</div>
+    <div class="box"><strong>${d.x4}</strong>🔫4X</div>
+    <div class="box"><strong>${d.awm}</strong>🏹AWM</div>
+    <div class="box"><strong>${d.cam}</strong>🔘BOTÃO</div>
+  </div>
+  <button class="btn" onclick="copiar()">📋 COPIAR SENSI</button>
+  `;
+}
+
+function copiar(){
+  let texto=document.getElementById("res").innerText;
+  navigator.clipboard.writeText(texto);
+  alert("Sensi copiada 🔥");
 }
 
 function rand(min,max){
