@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+
+<title>POP SENSI🌀</title>
+
+<style>
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:'Orbitron',sans-serif;
+  background:#000;
+  color:white;
+}
+
+body::before{
+  content:"";
+  position:fixed;
+  width:100%;
+  height:100%;
+  background:linear-gradient(#00aaff10 1px,transparent 1px),
+             linear-gradient(90deg,#00aaff10 1px,transparent 1px);
+  background-size:40px 40px;
+  z-index:-1;
+}
+
+.container{
+  width:100%;
+  padding:15px;
+}
+
+.banner img{
+  width:100%;
+  border-radius:20px;
+  box-shadow:0 0 40px #00aaff;
+}
+
+.card{
+  margin-top:15px;
+  background:#0a0f1f;
+  padding:20px;
+  border-radius:20px;
+  box-shadow:0 0 25px #00aaff22;
+}
+
+.title{
+  text-align:center;
+  color:#00aaff;
+}
+
+/* PLATFORM */
+.platform{
+  position:relative;
+  display:flex;
+  background:#0a0f1f;
+  padding:10px;
+  border-radius:10px;
+  margin-top:10px;
+}
+
+.selector{
+  position:absolute;
+  top:5px;
+  left:5px;
+  width:33.33%;
+  height:calc(100% - 20px);
+  background:linear-gradient(45deg,#00aaff,#0066ff);
+  border-radius:8px;
+  transition:0.3s;
+  box-shadow:0 0 15px #00aaff;
+}
+
+.plat{
+  flex:1;
+  padding:12px;
+  border:none;
+  background:transparent;
+  color:#aaa;
+  cursor:pointer;
+  z-index:2;
+}
+
+.plat.active{
+  color:white;
+}
+
+input, select{
+  width:100%;
+  margin-top:10px;
+  padding:12px;
+  border-radius:12px;
+  border:none;
+  background:#111827;
+  color:white;
+}
+
+.btn{
+  margin-top:12px;
+  width:100%;
+  padding:14px;
+  border:none;
+  border-radius:12px;
+  background:linear-gradient(45deg,#00aaff,#0066ff);
+  color:white;
+  font-weight:bold;
+  cursor:pointer;
+  box-shadow:0 0 15px #00aaff;
+}
+
+.btn2{
+  margin-top:10px;
+  width:100%;
+  padding:12px;
+  border-radius:12px;
+  border:1px solid #00aaff;
+  background:transparent;
+  color:#00aaff;
+  cursor:pointer;
+}
+
+/* QUIZ FULL SCREEN */
+.quiz-full{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:#000;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:9999;
+  animation:fade 0.3s ease;
+}
+
+.quiz-content{
+  width:90%;
+  max-width:400px;
+  background:#0a0f1f;
+  padding:25px;
+  border-radius:20px;
+  box-shadow:0 0 30px #00aaff;
+  text-align:center;
+}
+
+.quiz-content h3{
+  color:#00aaff;
+  margin-bottom:20px;
+}
+
+.quiz-btn{
+  width:100%;
+  margin-top:8px;
+  padding:12px;
+  border:none;
+  border-radius:12px;
+  background:#111827;
+  color:#00aaff;
+  font-weight:bold;
+  cursor:pointer;
+  transition:0.2s;
+  box-shadow:0 0 10px #00aaff33;
+}
+
+.quiz-btn:hover{
+  background:linear-gradient(45deg,#00aaff,#0066ff);
+  color:white;
+  box-shadow:0 0 20px #00aaff;
+}
+
+@keyframes fade{
+  from{opacity:0; transform:scale(0.95);}
+  to{opacity:1; transform:scale(1);}
+}
+
+/* RESULT */
+.result{
+  display:none;
+  margin-top:15px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+
+.box{
+  background:#111827;
+  padding:15px;
+  border-radius:12px;
+  text-align:center;
+  box-shadow:0 0 10px #00aaff33;
+}
+
+.box strong{
+  display:block;
+  font-size:20px;
+  color:#00aaff;
+}
+
+/* REVIEWS */
+.review{
+  background:#0a0f1f;
+  padding:10px;
+  border-radius:10px;
+  margin-top:8px;
+  box-shadow:0 0 10px #00aaff22;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <div class="banner">
+    <img src="https://i.imgur.com/Z104fSX.png">
+  </div>
+
+  <div class="card">
+    <h2 class="title">⚡️POP SENSI🌀</h2>
+
+    <div class="platform">
+      <div class="selector"></div>
+      <button class="plat active" onclick="setPlat(this,0)">🤖ANDROID</button>
+      <button class="plat" onclick="setPlat(this,1)">🍎IOS</button>
+      <button class="plat" onclick="setPlat(this,2)">🖱MOBILADOR</button>
+    </div>
+
+    <input placeholder="Modelo do celular">
+
+    <select>
+      <option>Alta</option>
+      <option>Média</option>
+      <option>Baixa</option>
+    </select>
+
+    <button class="btn" onclick="gerar()">⚡️GERAR SENSI</button>
+    <button class="btn2" onclick="seguir()">🪄SIGA O DONO</button>
+
+    <div id="quiz"></div>
+    <div class="result" id="res"></div>
+
+  </div>
+
+  <div class="review">⭐⭐⭐⭐⭐ "HXZINN: Só capa agora, sensi braba 🔥"</div>
+<div class="review">⭐⭐⭐⭐⭐ "L7NINJA: Melhor sensi que já testei slk"</div>
+<div class="review">⭐⭐⭐⭐⭐ "FF_K1LLER: Subi mestre fácil demais 😈"</div>
+<div class="review">⭐⭐⭐⭐⭐ "TRX_GHOST: Mira grudando só na cabeça 🎯"</div>
+<div class="review">⭐⭐⭐⭐⭐ "VXTZINN: Essa sensi é hack sem ser hack 😂"</div>
+
+</div>
+
+<script>
+function setPlat(btn,index){
+  document.querySelectorAll(".plat").forEach(b=>b.classList.remove("active"));
+  btn.classList.add("active");
+  document.querySelector(".selector").style.transform=`translateX(${index*100}%)`;
+}
+
+function seguir(){
+  window.open("https://www.tiktok.com","_blank");
+}
+
+/* QUIZ */
+let etapa=1;
+let respostas={};
+
+function gerar(){
+  etapa=1;
+  respostas={};
+  mostrarPergunta();
+}
+
+function mostrarPergunta(){
+  let q=document.getElementById("quiz");
+
+  if(etapa===1) q.innerHTML=tela("1️⃣ VOCÊ ESTA DANDO MUITO CAPA?",["SIM","NAO","MAIS OU MENOS"]);
+  if(etapa===2) q.innerHTML=tela("2️⃣ SUA MIRA ESTA GRUDANDO NO PEITO?",["SIM","NAO","MAIS OU MENOS"]);
+  if(etapa===3) q.innerHTML=tela("3️⃣ VOCÊ PREFERE?",["🟢 ALTA","🟡 MEDIA","🔴 BAIXA"]);
+  if(etapa===4) q.innerHTML=tela("4️⃣ SEU ESTILO?",["🔫 ARMA DE UM TIRO","🏹 SNIPER","🤡 LOUCO DA UMP"]);
+  if(etapa===5) gerarFinal();
+}
+
+function tela(p,ops){
+  return `
+  <div class="quiz-full">
+    <div class="quiz-content">
+      <h3>${p}</h3>
+      ${ops.map(o=>`<button class="quiz-btn" onclick="resp('${o}')">${o}</button>`).join("")}
+    </div>
+  </div>`;
+}
+
+function resp(r){
+  respostas["p"+etapa]=r;
+  etapa++;
+  mostrarPergunta();
+}
+
+function gerarFinal(){
+  let base=150;
+
+  if(respostas.p1==="NAO") base+=20;
+  if(respostas.p2==="SIM") base-=10;
+  if(respostas.p3.includes("ALTA")) base+=30;
+  if(respostas.p3.includes("BAIXA")) base-=30;
+  if(respostas.p4.includes("UMP")) base+=20;
+  if(respostas.p4.includes("SNIPER")) base-=20;
+
+  let d={
+    geral:rand(base-20,base+20),
+    red:rand(base-40,base),
+    x2:rand(base-50,base-10),
+    x4:rand(base-60,base-20),
+    awm:rand(base-70,base-30),
+    dpi:rand(400,700)
+    cam:rand(20,80)
+  };
+
+  document.getElementById("quiz").innerHTML="";
+
+  let r=document.getElementById("res");
+  r.style.display="block";
+
+  r.innerHTML=`
+  <h3 style="text-align:center;">SENSI FINAL 🔥</h3>
+  <div class="grid">
+    <div class="box"><strong>${d.geral}</strong>🎯GERAL</div>
+    <div class="box"><strong>${d.red}</strong>🔴PONT RED</div>
+    <div class="box"><strong>${d.x2}</strong>🔫2X</div>
+    <div class="box"><strong>${d.x4}</strong>🔫4X</div>
+    <div class="box"><strong>${d.awm}</strong>🏹AWM</div>
+    <div class="box"><strong>${d.dpi}</strong >¤DPI</div>
+    <div class="box"><strong>${d.cam}</strong>🔥BOTAO</div>
+  </div>`;
+}
+
+function rand(min,max){
+  return Math.floor(Math.random()*(max-min)+min);
+}
+</script>
+
+</body>
+</html>>
