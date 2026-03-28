@@ -15,42 +15,43 @@
 }
 
 body{
-  height:100vh;
+  min-height:100vh;
   display:flex;
   justify-content:center;
   align-items:center;
-
   background: linear-gradient(180deg, #050818, #0a0f2c);
+  padding:20px;
 }
 
-/* CARD PRINCIPAL */
+html, body{
+  overflow-x:hidden;
+}
+
+/* CARD */
 .box{
-  width:90%;
-  max-width:360px;
+  width:100%;
+  max-width:350px;
+  margin:auto;
   padding:30px 20px;
   border-radius:25px;
-
   background: linear-gradient(180deg, rgba(20,30,80,0.9), rgba(10,15,40,0.95));
-
   box-shadow:
-    0 0 50px rgba(0, 0, 0, 0.8),
-    inset 0 0 30px rgba(0, 195, 255, 0.05);
-
+    0 0 50px rgba(0,0,0,0.8),
+    inset 0 0 30px rgba(0,195,255,0.05);
   text-align:center;
 }
 
 /* LOGO */
 .logo{
-  width:95px;
-  margin-top:-70px;
+  width:90px;
+  margin-top:-60px;
   margin-bottom:10px;
-
   filter: drop-shadow(0 0 15px #00c3ff);
 }
 
 /* TITULO */
 h1{
-  font-size:30px;
+  font-size:28px;
   font-weight:800;
   color:#fff;
 }
@@ -66,20 +67,16 @@ h1 span{
   font-size:14px;
 }
 
-/* INPUT ESTILO BOTÃO */
+/* INPUT */
 .input{
   width:100%;
   padding:16px;
   border-radius:30px;
   border:none;
   outline:none;
-
   background: linear-gradient(90deg, #2a00ff, #1a00aa);
   color:white;
-
   margin-bottom:15px;
-
-  font-size:15px;
 }
 
 /* BOTÃO */
@@ -88,19 +85,52 @@ h1 span{
   padding:16px;
   border-radius:30px;
   border:none;
-
   background: linear-gradient(90deg, #2a00ff, #00c3ff);
   color:white;
-
   font-weight:bold;
   font-size:16px;
-
   cursor:pointer;
   transition:0.2s;
 }
 
 .btn:active{
   transform:scale(0.97);
+}
+
+/* 🔥 BOTÃO PREÇO INSANO */
+.price{
+  margin-top:18px;
+  padding:16px;
+  border-radius:40px;
+
+  background: linear-gradient(90deg, #00c3ff, #2a00ff, #00c3ff);
+  background-size:300% 300%;
+
+  color:white;
+  font-weight:900;
+  font-size:17px;
+  letter-spacing:1px;
+
+  text-align:center;
+
+  box-shadow:
+    0 0 15px #00c3ff,
+    0 0 30px #2a00ff,
+    0 0 45px rgba(0,195,255,0.6);
+
+  animation: brilho 3s infinite linear, pulse 1.5s infinite;
+}
+
+/* animações */
+@keyframes brilho{
+  0%{background-position:0%}
+  100%{background-position:300%}
+}
+
+@keyframes pulse{
+  0%{transform:scale(1)}
+  50%{transform:scale(1.05)}
+  100%{transform:scale(1)}
 }
 
 /* MSG */
@@ -115,7 +145,6 @@ h1 span{
 
 <div class="box">
 
-  <!-- LOGO -->
   <img class="logo" src="https://i.imgur.com/Z9IoRnb.png">
 
   <h1>POP SENSI<span>🌀</span></h1>
@@ -125,7 +154,8 @@ h1 span{
 
   <button class="btn" onclick="login()">Entrar</button>
 
-  <div class="price">POR APENAS: 4,90</div>
+  <!-- 🔥 BOTÃO NOVO -->
+  <div class="price">💎 ACESSO VIP • R$ 4,90 💎</div>
 
   <p id="msg"></p>
 
@@ -169,7 +199,6 @@ function login(){
   if(keysValidas.includes(input)){
     msg.style.color = "#00ffcc";
     msg.innerText = "✅ Acesso liberado!";
-    localStorage.setItem("acesso","true");
 
     setTimeout(()=>{
       window.location.href = "home.html";
@@ -179,22 +208,9 @@ function login(){
     msg.style.color = "red";
     msg.innerText = "❌ Key inválida!";
   }
+}
 
 </script>
 
 </body>
-</html>e");
-
-    setTimeout(()=>{
-      window.location.href = "home.html";
-    },1000);
-
-  }else{
-    msg.style.color = "red";
-    msg.innerText = "❌ Key inválida!";
-  }
-
-</script>
-
-</body>
-</html>
+  </html>
