@@ -1,0 +1,21 @@
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+
+<script>
+const SUPABASE_URL = "https://dlmxjipcacfvyclchexq.supabase.co";
+const SUPABASE_KEY = "sb_publishable_eorR3kTsgC-vPMxnBfc6mg_cjRzQONY";
+
+const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+// VERIFICA LOGIN
+async function checkUser() {
+  const { data } = await supabase.auth.getUser();
+
+  if (!data.user) {
+    window.location.href = "index.html";
+  }
+}
+
+checkUser();
+</script>
+
+<h1 style="color:white; text-align:center;">Bem-vindo ao painel 🔥</h1>
