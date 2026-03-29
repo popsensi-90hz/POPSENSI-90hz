@@ -2,246 +2,102 @@
 <html lang="pt-br">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>POP SENSI Login</title>
 
-<title>POP SENSI</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 
 <style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family: 'Segoe UI', sans-serif;
+body {
+  margin: 0;
+  background: black;
+  font-family: Arial;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
-body{
-  min-height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  background:#000;
-  padding:20px;
+.card {
+  background: linear-gradient(180deg, #0b1c3a, #09142b);
+  padding: 30px;
+  border-radius: 20px;
+  text-align: center;
+  width: 300px;
+  box-shadow: 0 0 30px #00c3ff33;
 }
 
-html, body{
-  overflow-x:hidden;
+h1 {
+  color: white;
 }
 
-/* FUNDO LEVE */
-#particles{
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  z-index:-1;
+input {
+  width: 100%;
+  padding: 15px;
+  margin-top: 15px;
+  border-radius: 30px;
+  border: none;
+  outline: none;
+  background: linear-gradient(90deg, #3a0ca3, #00c3ff);
+  color: white;
 }
 
-/* CARD */
-.box{
-  width:100%;
-  max-width:350px;
-  margin:auto;
-  padding:30px 20px;
-  border-radius:25px;
-  background: linear-gradient(180deg, rgba(20,30,80,0.9), rgba(10,15,40,0.95));
-  box-shadow:
-    0 0 50px rgba(0,0,0,0.8),
-    inset 0 0 30px rgba(0,195,255,0.05);
-  text-align:center;
+button {
+  width: 100%;
+  padding: 15px;
+  margin-top: 15px;
+  border-radius: 30px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
 }
 
-.logo{
-  width:90px;
-  margin-top:-60px;
-  margin-bottom:10px;
-  filter: drop-shadow(0 0 15px #00c3ff);
+.login {
+  background: linear-gradient(90deg, #3a0ca3, #00c3ff);
+  color: white;
 }
 
-h1{
-  font-size:28px;
-  font-weight:800;
-  color:#fff;
-}
-
-h1 span{
-  color:#00c3ff;
-}
-
-.sub{
-  color:#cfcfcf;
-  margin-bottom:25px;
-  font-size:14px;
-}
-
-.input{
-  width:100%;
-  padding:16px;
-  border-radius:30px;
-  border:none;
-  outline:none;
-  background: linear-gradient(90deg, #2a00ff, #1a00aa);
-  color:white;
-  margin-bottom:15px;
-}
-
-.btn{
-  width:100%;
-  padding:16px;
-  border-radius:30px;
-  border:none;
-  background: linear-gradient(90deg, #2a00ff, #00c3ff);
-  color:white;
-  font-weight:bold;
-  font-size:16px;
-  cursor:pointer;
-  transition:0.2s;
-}
-
-.btn:active{
-  transform:scale(0.97);
-}
-
-/* BOTÃO VIP COM LINK */
-.price{
-  display:block;
-  margin-top:18px;
-  padding:16px;
-  border-radius:40px;
-  background: linear-gradient(90deg, #00c3ff, #2a00ff);
-  color:white;
-  font-weight:900;
-  font-size:17px;
-  text-align:center;
-  text-decoration:none;
-  box-shadow:0 0 20px #00c3ff;
-}
-
-.price:active{
-  transform:scale(0.95);
-}
-
-#msg{
-  margin-top:10px;
-  font-size:14px;
+.vip {
+  background: linear-gradient(90deg, #00c3ff, #3a0ca3);
+  color: white;
 }
 </style>
-
 </head>
+
 <body>
 
-<canvas id="particles"></canvas>
+<div class="card">
+  <h1>POP SENSI 🌊</h1>
+  <p style="color: #aaa;">Acesso restrito – Seja bem-vindo</p>
 
-<div class="box">
+  <input type="email" id="email" placeholder="📧 Email">
+  <input type="password" id="senha" placeholder="🔒 Senha">
 
-  <img class="logo" src="https://i.imgur.com/Z9IoRnb.png">
-
-  <h1>POP SENSI<span>🌀</span></h1>
-  <p class="sub">Acesso restrito – Seja bem-vindo</p>
-
-  <input class="input" type="text" id="keyInput" placeholder="🔑 key de acesso">
-
-  <button class="btn" onclick="login()">Entrar</button>
-
-  <a class="price" href="https://discord.gg/XdrkUxgVt" target="_blank">
-    💎 COMPRAR ACESSO VIP
-  </a>
-
-  <p id="msg"></p>
-
+  <button class="login" onclick="login()">Entrar</button>
+  <button class="vip">💎 COMPRAR ACESSO VIP</button>
 </div>
 
 <script>
+const SUPABASE_URL = "https://dlmxjipcacfvyclchexq.supabase.co";
+const SUPABASE_KEY = "sb_publishable_eorR3kTsgC-vPMxnBfc6mg_cjRzQONY";
 
-/* 🔑 TODAS AS KEYS */
-const keysValidas = [
-"POPSENS-4G7H-J2K9","POPSENS-X9C3-P1L8","POPSENS-A6T2-Z8Q5","POPSENS-M3R7-D9F1",
-"POPSENS-K8N4-V2B6","POPSENS-Y5P1-H7X3","POPSENS-2D9Q-L6M4","POPSENS-B7F3-T1Z8",
-"POPSENS-V4X6-A9K2","POPSENS-Q1M8-C5R7","POPSENS-J9L2-P4N6","POPSENS-H3K7-Y8D1",
-"POPSENS-T6A5-W2X9","POPSENS-F1Z8-M4Q3","POPSENS-8P2C-R7L5","POPSENS-D9V6-B1K4",
-"POPSENS-L7X3-G2A8","POPSENS-C4N1-Q9T6","POPSENS-R5M8-J3P2","POPSENS-Z2K6-H4F9",
-"POPSENS-W8D1-Y7C3","POPSENS-P3Q9-L5V2","POPSENS-A7B4-X8M1","POPSENS-N1T6-F2K9",
-"POPSENS-G5H8-R3D7","POPSENS-K2X9-P6C4","POPSENS-M8L1-Z5Q7","POPSENS-Y3R6-A2N8",
-"POPSENS-B6V2-T9H4","POPSENS-Q7F1-W3K8","POPSENS-J4D8-C2M9","POPSENS-X2P5-L7A6",
-"POPSENS-H9N3-R8Z1","POPSENS-T1K7-F4B2","POPSENS-V8Q2-M6D3","POPSENS-C3Y9-A5P7",
-"POPSENS-R6L4-X1N8","POPSENS-Z5M2-H9T3","POPSENS-W1A8-D7Q6","POPSENS-P9X3-K4F2",
-"POPSENS-A2C7-V5R9","POPSENS-N8D4-Y1L3","POPSENS-G7T9-M2X5","POPSENS-K1B6-P8H4",
-"POPSENS-M5R3-Z7C2","POPSENS-Y4L1-Q8F6","POPSENS-B9H2-X3D7","POPSENS-Q6N5-A4T8",
-"POPSENS-J8F1-V2K3","POPSENS-X3P7-R9M6",
-"POPSENS-A7F3-K9Q2","POPSENS-X4M8-Z2L1","POPSENS-9D2K-P8W3","POPSENS-H7Q1-V5T9",
-"POPSENS-B3L8-R6X2","POPSENS-W9Z4-A1F7","POPSENS-K2P6-M8D3","POPSENS-T5X1-Q9B4",
-"POPSENS-L8C3-N7V2","POPSENS-R4F9-Y1M6","POPSENS-J6H2-U8K5","POPSENS-E3V7-Z9P1",
-"POPSENS-N5B1-W4T8","POPSENS-Y2K9-F7L3","POPSENS-Q8M4-D2X6","POPSENS-V1Z5-C9R7",
-"POPSENS-U7D3-H4P8","POPSENS-F9X2-A6N5","POPSENS-C4R8-J1T9","POPSENS-P6L2-G7Y3",
-"POPSENS-D8N5-X2K1","POPSENS-Z1Q7-B9M4","POPSENS-G3T9-V6C2","POPSENS-M2A8-W5F7",
-"POPSENS-K9R1-P4D6","POPSENS-H5X7-Z3L2","POPSENS-T8F4-N1Q9","POPSENS-Y6C2-M9A3",
-"POPSENS-R1B5-K8Z7","POPSENS-X7P3-D4V9","POPSENS-L2N6-F1T8","POPSENS-W8M9-C3H5",
-"POPSENS-A4Q2-Y7R6","POPSENS-V9D1-P5X3","POPSENS-J2T7-K6M8","POPSENS-B7Z3-G4F1",
-"POPSENS-N1H8-L9C2","POPSENS-Q5R4-A2X7","POPSENS-C8K1-V3D9","POPSENS-F2M7-Y8P4",
-"POPSENS-P3X9-T1L6","POPSENS-D6A5-R2H8","POPSENS-Z7V2-Q4K1","POPSENS-G9F3-W8M2",
-"POPSENS-M1L8-B7X5","POPSENS-H2Y6-C9R4","POPSENS-T4D7-K1P3","POPSENS-X5N2-A8Z9",
-"POPSENS-L9Q3-V6F1","POPSENS-R7K4-M2D8"
-];
+const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-/* LOGIN */
-function login(){
-  const input = document.getElementById("keyInput").value.trim();
-  const msg = document.getElementById("msg");
+async function login() {
+  const email = document.getElementById("email").value;
+  const senha = document.getElementById("senha").value;
 
-  if(keysValidas.includes(input)){
-    msg.style.color = "#00ffcc";
-    msg.innerText = "✅ Acesso liberado!";
-    setTimeout(()=>{ window.location.href="home.html"; },1000);
-  }else{
-    msg.style.color = "red";
-    msg.innerText = "❌ Key inválida!";
+  const { data, error } = await supabase.auth.signInWithPassword({
+    email: email,
+    password: senha
+  });
+
+  if (error) {
+    alert("Email ou senha incorretos!");
+  } else {
+    alert("Login realizado com sucesso!");
+    window.location.href = "painel.html";
   }
 }
-
-/* FUNDO LEVE */
-const canvas = document.getElementById("particles");
-const ctx = canvas.getContext("2d");
-
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-let particles = [];
-
-for(let i=0;i<30;i++){
-  particles.push({
-    x:Math.random()*canvas.width,
-    y:Math.random()*canvas.height,
-    size:Math.random()*2+1,
-    speedX:(Math.random()-0.5)*0.5,
-    speedY:(Math.random()-0.5)*0.5
-  });
-}
-
-function animate(){
-  ctx.clearRect(0,0,canvas.width,canvas.height);
-
-  particles.forEach(p=>{
-    p.x+=p.speedX;
-    p.y+=p.speedY;
-
-    if(p.x<0||p.x>canvas.width) p.speedX*=-1;
-    if(p.y<0||p.y>canvas.height) p.speedY*=-1;
-
-    ctx.beginPath();
-    ctx.arc(p.x,p.y,p.size,0,Math.PI*2);
-    ctx.fillStyle="#00c3ff";
-    ctx.fill();
-  });
-
-  requestAnimationFrame(animate);
-}
-
-animate();
-
-window.addEventListener("resize", ()=>{
-  canvas.width=window.innerWidth;
-  canvas.height=window.innerHeight;
-});
 </script>
 
 </body>
