@@ -2,53 +2,90 @@
 <html lang="pt-br">
 <head>
 <meta charset="UTF-8">
-<title>POP SENSI Login</title>
+<title>POP SENSI</title>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 
 <style>
-body {
+* {
   margin: 0;
-  background: black;
+  padding: 0;
+  box-sizing: border-box;
   font-family: Arial;
+}
+
+body {
+  height: 100vh;
+  background: black;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  overflow: hidden;
 }
 
+/* FUNDO COM PARTÍCULAS */
+body::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(#00c3ff 2px, transparent 2px);
+  background-size: 80px 80px;
+  opacity: 0.2;
+}
+
+/* CARD */
 .card {
-  background: linear-gradient(180deg, #0b1c3a, #09142b);
-  padding: 30px;
+  position: relative;
+  width: 280px;
+  padding: 25px;
   border-radius: 20px;
+  background: linear-gradient(180deg, #0b1c3a, #09142b);
   text-align: center;
-  width: 300px;
-  box-shadow: 0 0 30px #00c3ff33;
+  box-shadow: 0 0 40px #00c3ff33;
 }
 
+/* LOGO */
+.logo {
+  width: 70px;
+  margin-bottom: 10px;
+}
+
+/* TEXTOS */
 h1 {
   color: white;
+  font-size: 20px;
 }
 
+p {
+  color: #aaa;
+  font-size: 12px;
+  margin-bottom: 15px;
+}
+
+/* INPUTS */
 input {
   width: 100%;
-  padding: 15px;
-  margin-top: 15px;
-  border-radius: 30px;
+  padding: 12px;
+  margin-top: 10px;
+  border-radius: 25px;
   border: none;
   outline: none;
   background: linear-gradient(90deg, #3a0ca3, #00c3ff);
   color: white;
+  font-size: 13px;
 }
 
+/* BOTÕES */
 button {
   width: 100%;
-  padding: 15px;
-  margin-top: 15px;
-  border-radius: 30px;
+  padding: 12px;
+  margin-top: 12px;
+  border-radius: 25px;
   border: none;
   font-weight: bold;
   cursor: pointer;
+  font-size: 14px;
 }
 
 .login {
@@ -66,8 +103,10 @@ button {
 <body>
 
 <div class="card">
+  <img src="SUA_IMAGEM_AQUI.png" class="logo">
+
   <h1>POP SENSI 🌊</h1>
-  <p style="color: #aaa;">Acesso restrito – Seja bem-vindo</p>
+  <p>Acesso restrito – Seja bem-vindo</p>
 
   <input type="email" id="email" placeholder="📧 Email">
   <input type="password" id="senha" placeholder="🔒 Senha">
@@ -86,7 +125,7 @@ async function login() {
   const email = document.getElementById("email").value;
   const senha = document.getElementById("senha").value;
 
-  const { data, error } = await supabase.auth.signInWithPassword({
+  const { error } = await supabase.auth.signInWithPassword({
     email: email,
     password: senha
   });
@@ -94,7 +133,6 @@ async function login() {
   if (error) {
     alert("Email ou senha incorretos!");
   } else {
-    alert("Login realizado com sucesso!");
     window.location.href = "painel.html";
   }
 }
