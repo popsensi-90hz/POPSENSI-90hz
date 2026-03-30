@@ -19,7 +19,6 @@ body{
   overflow-x:hidden;
 }
 
-/* GRID BACKGROUND */
 body::before{
   content:"";
   position:fixed;
@@ -55,7 +54,6 @@ body::before{
   text-shadow:0 0 10px #00aaff;
 }
 
-/* PLATFORM */
 .platform{
   position:relative;
   display:flex;
@@ -91,7 +89,6 @@ body::before{
   color:white;
 }
 
-/* INPUTS */
 input, select{
   width:100%;
   margin-top:10px;
@@ -102,7 +99,6 @@ input, select{
   color:white;
 }
 
-/* BUTTONS */
 .btn{
   margin-top:12px;
   width:100%;
@@ -204,6 +200,37 @@ input, select{
   color:#00aaff;
 }
 
+/* 🔥 NOVO - DPI */
+.dpi-box{
+  grid-column:span 2;
+  border:1px solid #00aaff;
+  box-shadow:0 0 15px #00aaff55;
+}
+
+/* 🔥 NOVO - BOTÃO INSANO */
+.fire-box{
+  margin-top:15px;
+  padding:20px;
+  border-radius:20px;
+  text-align:center;
+  background:linear-gradient(180deg,#0a0a0a,#111);
+  box-shadow:0 0 25px #ff000055;
+  border:1px solid #ff000044;
+}
+
+.fire-box span{
+  display:block;
+  font-size:14px;
+  color:#aaa;
+  margin-bottom:10px;
+}
+
+.fire-box strong{
+  font-size:50px;
+  color:#ff2a2a;
+  text-shadow:0 0 20px red;
+}
+
 /* REVIEWS */
 .review{
   background:#0a0f1f;
@@ -243,7 +270,6 @@ input, select{
 
   </div>
 
-  <!-- REVIEWS GAMER -->
   <div class="review">⭐⭐⭐⭐⭐ "Brabo demais!" - xX_FlashKill_Xx</div>
   <div class="review">⭐⭐⭐⭐⭐ "Subi mestre fácil 🔥" - ProHeadShot77</div>
   <div class="review">⭐⭐⭐⭐⭐ "Melhor sensi da vida!" - GhostRush</div>
@@ -264,7 +290,6 @@ function seguir(){
   window.open("https://www.tiktok.com","_blank");
 }
 
-/* QUIZ */
 let etapa=1;
 let respostas={};
 
@@ -302,22 +327,14 @@ function resp(r){
 }
 
 function gerarFinal(){
-  let base=150;
-
-  if(respostas.p1==="NAO") base+=20;
-  if(respostas.p2==="SIM") base-=10;
-  if(respostas.p3==="ALTA") base+=30;
-  if(respostas.p3==="BAIXA") base-=30;
-  if(respostas.p4==="UMP") base+=20;
-  if(respostas.p4==="SNIPER") base-=20;
-
   let d={
     geral:rand(150,200),
     red:rand(140,180),
     x2:rand(130,170),
     x4:rand(100,160),
     awm:rand(50,150),
-    cam:rand(20, 50)
+    botao:rand(30,70),
+    dpi:rand(300,800)
   };
 
   document.getElementById("quiz").innerHTML="";
@@ -327,14 +344,24 @@ function gerarFinal(){
 
   r.innerHTML=`
   <h3 style="text-align:center;">🔥 SUA SENSI 🔥</h3>
+
   <div class="grid">
     <div class="box"><strong>${d.geral}</strong>🎯GERAL</div>
     <div class="box"><strong>${d.red}</strong>🔴PONTO VERMELHO</div>
     <div class="box"><strong>${d.x2}</strong>🔥2X</div>
     <div class="box"><strong>${d.x4}</strong>🔫4X</div>
     <div class="box"><strong>${d.awm}</strong>🏹AWM</div>
-    <div class="box"><strong>${d.cam}</strong>🔘BOTÃO</div>
+
+    <div class="box dpi-box">
+      <strong>${d.dpi}</strong>⚙️ DPI
+    </div>
   </div>
+
+  <div class="fire-box">
+    <span>TAMANHO IDEAL DO BOTÃO DE ATIRAR</span>
+    🔥 <strong>${d.botao}</strong>
+  </div>
+
   <button class="btn" onclick="copiar()">📋 COPIAR SENSI</button>
   `;
 }
