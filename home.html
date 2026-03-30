@@ -200,35 +200,29 @@ input, select{
   color:#00aaff;
 }
 
-/* 🔥 NOVO - DPI */
+/* 🔥 AJUSTES PEDIDOS */
 .dpi-box{
-  grid-column:span 2;
-  border:1px solid #00aaff;
-  box-shadow:0 0 15px #00aaff55;
+  grid-column:auto;
 }
 
-/* 🔥 NOVO - BOTÃO INSANO */
 .fire-box{
   margin-top:15px;
-  padding:20px;
-  border-radius:20px;
+  background:#111827;
+  padding:15px;
+  border-radius:12px;
   text-align:center;
-  background:linear-gradient(180deg,#0a0a0a,#111);
-  box-shadow:0 0 25px #ff000055;
-  border:1px solid #ff000044;
+  box-shadow:0 0 10px #00aaff33;
 }
 
 .fire-box span{
   display:block;
   font-size:14px;
   color:#aaa;
-  margin-bottom:10px;
 }
 
 .fire-box strong{
-  font-size:50px;
-  color:#ff2a2a;
-  text-shadow:0 0 20px red;
+  font-size:20px;
+  color:#00aaff;
 }
 
 /* REVIEWS */
@@ -351,15 +345,13 @@ function gerarFinal(){
     <div class="box"><strong>${d.x2}</strong>🔥2X</div>
     <div class="box"><strong>${d.x4}</strong>🔫4X</div>
     <div class="box"><strong>${d.awm}</strong>🏹AWM</div>
-
-    <div class="box dpi-box">
-      <strong>${d.dpi}</strong>⚙️ DPI
-    </div>
+    <div class="box"><strong>${d.dpi}</strong>⚙️DPI</div>
   </div>
 
-  <div class="fire-box">
-    <span>TAMANHO IDEAL DO BOTÃO DE ATIRAR</span>
-    🔥 <strong>${d.botao}</strong>
+  <div class="grid">
+    <div class="box">
+      <strong>${d.botao}</strong>🔥BOTÃO
+    </div>
   </div>
 
   <button class="btn" onclick="copiar()">📋 COPIAR SENSI</button>
