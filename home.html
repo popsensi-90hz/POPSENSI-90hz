@@ -207,23 +207,26 @@ input, select{
 
 .fire-box{
   margin-top:15px;
-  background:#111827;
-  padding:15px;
-  border-radius:12px;
+  padding:20px;
+  border-radius:20px;
   text-align:center;
-  box-shadow:0 0 10px #00aaff33;
+  background:linear-gradient(180deg,#0a0f1f,#111827);
+  box-shadow:0 0 25px #00aaff55;
+  border:1px solid #00aaff44;
 }
 
 .fire-box span{
   display:block;
   font-size:14px;
   color:#aaa;
+  margin-bottom:10px;
 }
 
 .fire-box strong{
-  font-size:20px;
+  font-size:50px;
   color:#00aaff;
-}
+  text-shadow:0 0 20px #00aaff;
+  }
 
 /* REVIEWS */
 .review{
@@ -340,19 +343,18 @@ function gerarFinal(){
   <h3 style="text-align:center;">🔥 SUA SENSI 🔥</h3>
 
   <div class="grid">
-    <div class="box"><strong>${d.geral}</strong>🎯GERAL</div>
-    <div class="box"><strong>${d.red}</strong>🔴PONTO VERMELHO</div>
-    <div class="box"><strong>${d.x2}</strong>🔥2X</div>
-    <div class="box"><strong>${d.x4}</strong>🔫4X</div>
-    <div class="box"><strong>${d.awm}</strong>🏹AWM</div>
-    <div class="box"><strong>${d.dpi}</strong>⚙️DPI</div>
-  </div>
+  <div class="box"><strong>${d.geral}</strong>🎯GERAL</div>
+  <div class="box"><strong>${d.red}</strong>🔴PONTO VERMELHO</div>
+  <div class="box"><strong>${d.x2}</strong>🔥2X</div>
+  <div class="box"><strong>${d.x4}</strong>🔫4X</div>
+  <div class="box"><strong>${d.awm}</strong>🏹AWM</div>
+  <div class="box"><strong>${d.dpi}</strong>⚙️DPI</div>
+</div>
 
-  <div class="grid">
-    <div class="box">
-      <strong>${d.botao}</strong>🔥BOTÃO
-    </div>
-  </div>
+<div class="fire-box">
+  <span>TAMANHO IDEAL DO BOTÃO DE ATIRAR</span>
+  🔘 <strong>${d.botao}</strong>
+</div>
 
   <button class="btn" onclick="copiar()">📋 COPIAR SENSI</button>
   `;
