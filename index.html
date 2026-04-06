@@ -154,12 +154,16 @@
     </div>
 
     <script>
+        // Sempre que entrar na página, remove acesso anterior
+        localStorage.removeItem("acessoLiberado");
+
         function validarAcesso() {
             const keyInput = document.getElementById('accessKey').value;
             const keyCorreta = "POPSENS26";
 
             if (keyInput === keyCorreta) {
                 alert("Acesso Autorizado! Carregando painel...");
+                localStorage.setItem("acessoLiberado", "true");
                 window.location.href = "home.html";
             } else {
                 alert("Key Inválida! Tente novamente ou compre seu acesso VIP.");
